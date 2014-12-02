@@ -1,4 +1,3 @@
-sensomate-attendance
-====================
+# attendance
 
-Sensomate
+a [Sails](http://sailsjs.org) application
