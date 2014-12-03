@@ -15,7 +15,10 @@ module.exports = {
 
 		var data_from_client = req.params.all();
 
-		Employee.findByUid(data_from_client.uid)
+		if(req.method == 'POST'){
+
+
+			Employee.findByUid(data_from_client.uid)
 				.exec(function(err,data){
 
 					console.log(data);
@@ -24,24 +27,36 @@ module.exports = {
 					else
 						data_from_client.emp_entry = data[0].id;
 
+					console.log(err);
 					Attendance.create(data_from_client)
-							.then(function(success_data){
+							.exec(function(err,success_data){
+
+								console.log(err);
+								Attendance.publishCreate({id:success_data.id, data:success_data});
 								console.log(success_data);
 								return res.json(200,{ log_entry: success_data.id })
 							})
-							.fail(function(error_data){destroy/3
-								console.log(error_data);
+							// (function(error_data){destroy/3
+							// 	console.log(error_data);
 
-								// No need to send model data
-								delete error_data.model;
-								return res.json(400,error_data);
-							});
+							// 	// No need to send model data
+							// 	delete error_data.model;
+							// 	return res.json(400,error_data);
+							// });
 
 				});
-
-
-		//Console Log in server
-		console.log(data_from_client);
+			//Console Log in server
+			console.log(data_from_client);
+	
+		}
+		else if(req.isSocket){
+			Attendance.watch(req.socket);
+			console.log('User with socket id '+req.socket.id+' is now subscribed to the model class Attendance.');
+			return;
+		}
+		else{
+			console.log("errr");
+		}
 	},
 
 	// lastentry:function(req,res){

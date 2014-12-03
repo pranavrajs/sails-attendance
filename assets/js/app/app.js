@@ -27,7 +27,11 @@ assetApp.config(['$routeProvider',function($routeProvider){
 assetApp.controller('CheckinHistController',['$scope','$http','$log','$interval','$filter',function($scope,$http,$log,$interval,$filter){
 
 	$scope.empList = [];
-	$scope.baseurl = "http://localhost:1337/";
+	io.socket.get('/attendance/pushtodb');
+    io.socket.on('attendance',function(data){
+      $scope.getRecentCheckin();
+    });
+	$scope.baseurl = "https://sensomate-checkin.herokuapp.com/";
 	$scope.getRecentCheckin = function(){
 	//$interval(function(){
 
