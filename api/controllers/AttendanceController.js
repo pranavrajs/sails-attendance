@@ -32,7 +32,12 @@ module.exports = {
 							.exec(function(err,success_data){
 
 								console.log(err);
-								Attendance.publishCreate({id:success_data.id, data:success_data});
+								Attendance.publishCreate({
+									id:success_data.id, 
+									uid:success_data.uid,
+									capturedAt:success_data.capturedAt,
+									deviceid:success_data.deviceid
+								});
 								console.log(success_data);
 								return res.json(200,{ log_entry: success_data.id })
 							})

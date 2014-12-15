@@ -7,8 +7,5 @@
 
 module.exports = {
 	
-	createEmp:function(req,res){
-		
-	}
 };
 
