@@ -38,5 +38,6 @@ using POST parameters
 Attendance wraps up model association with Employee through `emp_entry` attribute which is generated automatically by the system by searching it with UID
 
 
-
+New Update: 
+Adding Redis as Pub Sub
 
