@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  
+  connection:'mysql',
 	schema: false,
 	beforeCreate: function(values, next) {
 	  next();

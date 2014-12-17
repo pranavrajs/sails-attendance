@@ -7,6 +7,7 @@
 
 module.exports = {
 
+	connection:'mysql',
 	attributes: {
 
 		// Associated to Employee

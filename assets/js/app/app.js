@@ -6,6 +6,10 @@ assetApp.config(['$routeProvider',function($routeProvider){
 		templateUrl:'checkinhistory.html',
 		controller:'CheckinHistController'
 	}).
+	when('/login',{
+		templateUrl:'login.html',
+		controller:'LoginController'
+	}).
 	when('/map-asset',{
 		templateUrl:'map-asset.html',
 		controller:'MapAssetController'
@@ -19,7 +23,7 @@ assetApp.config(['$routeProvider',function($routeProvider){
 		controller:'AssetDetailsController'
 	}).
 	otherwise({
-		redirectTo:'/checkinhistory'
+		redirectTo:'/login'
 	});
 }]);
 
@@ -58,6 +62,9 @@ assetApp.controller('CheckinHistController',['$scope','$http','$log','$interval'
  //  	$scope.order('-',true);
 }]);
 assetApp.controller('AddAssetController',function($scope){
+
+});
+assetApp.controller('LoginController',function($scope){
 
 });
 assetApp.controller('MapAssetController',function($scope){

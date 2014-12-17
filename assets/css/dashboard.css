@@ -3,7 +3,9 @@
 body {
   padding-top: 50px;
   font-family: 'Open Sans';
-  font-size: 12px;/*
+  font-size: 12px;
+  background: #ecf0f1;  
+  /*
   webkit-text-stroke: 0.6px; 
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);*/
 }
@@ -271,9 +273,18 @@ input
 {
   margin-left: 13px;
 }
+.login_form{
+  background: #fff;
+  padding: 30px;
+   position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
 .logo{
 
-width: 209px;
+width: 210px;
 margin-top: -17px;
 }
 .left-asset-move-p span
