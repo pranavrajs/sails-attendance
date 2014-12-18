@@ -16,10 +16,14 @@ module.exports = {
 	attributes: {
 
   		name:{
-  			type:"string",
-  			required:true,
-		    minLength: 2
-  		},
+        type:"string",
+        required:true,
+        minLength: 2
+      },
+      url:{
+        type:"string",
+        minLength: 2
+      },
   		phone:{
   			type:"string",
   			required:true
@@ -43,10 +47,10 @@ module.exports = {
   			required:true,
        		unique:true
   		},
-      	status:{
-			type:"integer",
-			defaultsTo:1
-		},
+      status:{
+        type:"integer",
+        defaultsTo:1
+		  },
 
 		
 	}

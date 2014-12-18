@@ -6,46 +6,11 @@
               <li><a>Employee</a></li>
               <li class="active">Checkin History</li>
             </ol>
-            <!-- Asset Details -->
-            <div class="col-lg-6">
-              <div class="panel panel-primary" style="box-shadow: 0;-webkit-box-shadow:0;">
-                <div class="panel-body">
-                    <h4>Latest Checkin</h4>
-                    <div class="col-lg-12 asset-details" ng-repeat = "employee in empList | orderBy:predicate:reverse | limitTo: 1">
-                          <div class="col-md-6 left-asset-move">
-                              <p><strong>Employee ID: </strong> {{employee.emp_entry.uid}} </p>
-                              <p><strong>Employee Name: </strong>{{employee.emp_entry.name}}</p>
-                              <p><strong>Designation: </strong> {{employee.emp_entry.desig}} </p>
-                              <p><strong>Phone: </strong> {{employee.emp_entry.phone}} </p>
-                              <p><strong>Email: </strong> {{employee.emp_entry.email}} </p>
-
-                              <p><strong>Checkin Time: </strong>{{employee.capturedAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
-                              <p><strong>Checkin Device: </strong> {{employee.deviceid}} </p>
-                             
-                          </div>
-                          <div class="col-md-6 right-asset-move">        
-                            
-                          </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-               <div class="panel panel-default" style="box-shadow: 0;-webkit-box-shadow:0;">
-                <div class="panel-body">
-                    <div 
-                      data-ac-chart="'bar'" 
-                      data-ac-data="data" 
-                      data-ac-config="config" 
-                      class="chart">
-                    </div>
-                </div>
-              </div>
-            </div>
+           
             <!-- Table showing movement history -->
             <div class="col-lg-12">
               <div class="panel panel-default" style="">
-                <div class="panel-heading movement-history"><h3>CHECKIN HISTORY - Last 15 checkin</h3></div>
+                <div class="panel-heading movement-history"><h4>Complete Checkin History</h4></div>
                 <div class="panel-body">
                     <table class="table table-bordered" id="movement-table">
                         <thead>
@@ -56,7 +21,7 @@
                           <th>DeviceID</th>
                         </thead>
                         <tbody>
-                          <tr ng-repeat = "employee in empList | orderBy:predicate:reverse | limitTo: 15">
+                          <tr ng-repeat = "employee in empList | orderBy:predicate:reverse ">
                             <td>{{$index+1}}</td>
                             <td>{{employee.emp_entry.name}}</td>
                             <td>{{employee.emp_entry.desig}}</td>

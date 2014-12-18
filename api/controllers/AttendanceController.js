@@ -64,37 +64,40 @@ module.exports = {
 		}
 	},
 
-	// lastentry:function(req,res){
+	lastentry:function(req,res){
 
-	// 	var id = req.param('id');
-	// 	Attendance
-	// 	.find()
-	// 		.sort('id DESC')
-	// 		.limit(1)
-	// 		.then(function(data){
-	// 		 	if(data === undefined) // No data
-	// 		 		return res.json({
-	// 		 					notDefined:true
-	// 		 				},403);
-	// 		 	else{
-	// 		 		//Delete un-necessary data sent back to client
-	// 		 		delete data[0].id;
-	// 		 		delete data[0].createdAt;
-	// 		 		delete data[0].updatedAt;
+		var id = req.param('id');
+		console.log(id);		
+		Attendance
+		.find({uid:id})
+			.sort('id DESC')
+			.limit(1)
+			.then(function(data){
+				console.log(data);
+			 	if(data === undefined || data.length===0) // No data
+			 		return res.json({
+			 					notDefined:true
+			 				});
+			 	
+			 	else{
+			 		//Delete un-necessary data sent back to client
+			 		delete data[0].id;
+			 		delete data[0].createdAt;
+			 		delete data[0].updatedAt;
 
-	// 		 		return res.json({
-	// 		 					notDefined:false,
-	// 		 					data:data[0]
-	// 		 				});
-	// 		 	}
-	// 		})
-	// 		.fail(function(error_data){
-	// 		 	console.log("Err : "+error_data);
-	// 		 	return res.json({
-	// 		 					notDefined: true,
-	// 		 					error: error_data
-	// 		 				});
-	// 		});
-	// }	
+			 		return res.json({
+			 					notDefined:false,
+			 					data:data[0]
+			 				});
+			 	}
+			})
+			.fail(function(error_data){
+			 	console.log("Err : "+error_data);
+			 	return res.json({
+			 					notDefined: true,
+			 					error: error_data
+			 				},403);
+			});
+	}	
 };
 

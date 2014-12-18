@@ -1,0 +1,125 @@
+          <!-- Content Container -->
+          <div ng-include src="'includes/sidebar.html'"></div>
+          <div class="content-container col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li><a>Employee</a></li>
+              <li class="active">Dashboard</li>
+            </ol>
+            <!-- Asset Details -->
+            <div class="col-lg-6">
+              <div class="panel panel-default" style="box-shadow: 0;-webkit-box-shadow:0;">
+                <div class="panel-heading"><h4>Latest Checkin</h4></div>
+                <div class="panel-body">
+                    <div class="col-lg-12 asset-details" ng-repeat = "employee in empList | orderBy:predicate:reverse | limitTo: 1">
+                          <div class="col-md-12 left-asset-move">
+                              <p><strong>Employee ID: </strong> {{employee.emp_entry.uid}} </p>
+                              <p><strong>Employee Name: </strong>{{employee.emp_entry.name}}</p>
+                              <p><strong>Designation: </strong> {{employee.emp_entry.desig}} </p>
+                              <p><strong>Phone: </strong> {{employee.emp_entry.phone}} </p>
+                              <p><strong>Email: </strong> {{employee.emp_entry.email}} </p>
+
+                              <p><strong>Checkin Time: </strong>{{employee.capturedAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
+                              <p><strong>Checkin Device: </strong> {{employee.deviceid}} </p>
+                             
+                          </div>
+                        
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+               <div class="panel panel-default" style="box-shadow: 0;-webkit-box-shadow:0;">
+                <div class="panel-body">
+                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Table showing movement history -->
+            <div class="col-lg-12">
+              <div class="panel panel-default" style="">
+                <div class="panel-heading movement-history"><h4>CheckinHistory - Last 15 checkin</h4></div>
+                <div class="panel-body">
+                    <table class="table table-bordered" id="movement-table">
+                        <thead>
+                          <th>Sl.No</th>
+                          <th>Name</th>
+                          <th>Desig</th>
+                          <th>TimeStamp</th>
+                          <th>DeviceID</th>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat = "employee in empList | orderBy:predicate:reverse | limitTo: 15">
+                            <td>{{$index+1}}</td>
+                            <td>{{employee.emp_entry.name}}</td>
+                            <td>{{employee.emp_entry.desig}}</td>
+                            <td>{{employee.capturedAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                            <td>{{employee.deviceid}}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <script type="text/javascript">
+             $('#container').highcharts({
+                  chart: {
+                      type: 'column'
+                  },
+                  title: {
+                      text: 'Daily Attendance'
+                  },
+                  xAxis: {
+                      categories: [
+                          '18/12',
+                          '17/12',
+                          '16/12',
+                          '15/12',
+                          '14/12',
+                          '13/12',
+                          '12/12',
+                          '11/12',
+                          '10/12',
+                          '09/12',
+                          '08/12',
+                          '07/12'
+                      ]
+                  },
+                  yAxis: {
+                      min: 0,
+                      title: {
+                          text: 'Attendance(%)'
+                      }
+                  },
+                  tooltip: {
+                      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                          '<td style="padding:0"><b>{point.y:.1f}%</b></td></tr>',
+                      footerFormat: '</table>',
+                      shared: true,
+                      useHTML: true
+                  },
+                  plotOptions: {
+                      column: {
+                          pointPadding: 0.2,
+                          borderWidth: 0
+                      }
+                  },
+                  series: [{
+                      name: 'Men',
+                      data: [50, 25, 14, 12,50, 25, 14, 12,50, 25]
+
+                  }, {
+                      name: 'Women',
+                      data: [40, 50, 34, 91,40, 50, 34, 91,40, 50]
+
+                  }, {
+                      name: 'Total',
+                      data: [45, 37.5, 24, 51.5,45, 37.5, 24, 51.5,45, 37.5]
+
+                  }]
+              });
+          </script>
+          <!-- End Content Container -->

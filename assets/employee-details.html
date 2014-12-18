@@ -1,0 +1,27 @@
+          <!-- Content Container -->
+          <div ng-include src="'includes/sidebar.html'"></div>
+          <div class="content-container col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li><a>Employee</a></li>
+              <li class="active">Employee Details</li>
+            </ol>
+            <!-- Asset Details -->
+           
+            <!-- Table showing movement history -->
+            <div class="col-lg-12">
+              <div class="panel panel-default" >
+                <div class="panel-heading"><h4>Employee Profile</h4></div>
+                <div class="panel-body">
+                    <label>Select an Employee :&nbsp;</label>
+                    <div class="form-group">
+                      <select ng-model="empDetails">
+                        <option ng-repeat="emp in empData " value="{{emp.id}}">{{emp.empid}} - {{emp.name}}</option>
+                      </select>
+                    </div>
+                    <a href="#/employee-profile/{{empDetails}}" class="btn btn-primary" >Submit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Content Container -->
