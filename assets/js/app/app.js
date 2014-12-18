@@ -40,12 +40,10 @@ assetApp.controller('CheckinHistController',['$scope','$http','$log','$interval'
 	$scope.empList = [];
 	io.socket.get('/attendance/pushtodb');
     io.socket.on('attendance',function(data){
-    	alert(data);
-
     	$scope.getRecentCheckin();
     });
     
-	$scope.baseurl = "http://ec2-54-148-0-61.us-west-2.compute.amazonaws.com:1337/";
+	$scope.baseurl = "http://localhost:1337/";
 	$scope.getRecentCheckin = function(){
 	//$interval(function(){
 		
