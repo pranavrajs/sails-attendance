@@ -8,7 +8,7 @@
             </ol>
             <!-- Asset Details -->
             <div class="col-lg-6">
-              <div class="panel panel-primary" style="border-radius:0px;">
+              <div class="panel panel-primary" style="box-shadow: 0;-webkit-box-shadow:0;">
                 <div class="panel-body">
                     <h4>Latest Checkin</h4>
                     <div class="col-lg-12 asset-details" ng-repeat = "employee in empList | orderBy:predicate:reverse | limitTo: 1">
@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="col-lg-6">
-               <div class="panel panel-default" style="border-radius:0px;">
+               <div class="panel panel-default" style="box-shadow: 0;-webkit-box-shadow:0;">
                 <div class="panel-body">
                     <div 
                       data-ac-chart="'bar'" 
@@ -44,7 +44,7 @@
             </div>
             <!-- Table showing movement history -->
             <div class="col-lg-12">
-              <div class="panel panel-default" style="border-radius:0px;">
+              <div class="panel panel-default" style="">
                 <div class="panel-heading movement-history"><h3>CHECKIN HISTORY - Last 15 checkin</h3></div>
                 <div class="panel-body">
                     <table class="table table-bordered" id="movement-table">

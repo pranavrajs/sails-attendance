@@ -234,6 +234,15 @@ input
 {
   border-radius: 20px;
 }
+.alert.top-right {
+  position: absolute;
+  width: 20%;
+
+  right: 0;
+  margin-top:   20px;
+  z-index: 9999;
+  outline: none;
+}
 .modal-dialog
 {
   margin-top:110px;
@@ -245,7 +254,6 @@ input
 .panel
 {
   border:0px;
-
 }
 .panel h3
 {
@@ -315,7 +323,7 @@ margin-top: -17px;
 
   margin-left: 16.666%;
   margin-bottom: 6%;
-  background: #fff;
+  background:  #ecf0f1;
   overflow-y:auto;
   height: 100%;
 }
@@ -327,7 +335,7 @@ margin-top: -17px;
 .breadcrumb
 {
   border-radius: 0px;
-  background: #fff;
+  background:  #ecf0f1;
 }
 
 .footer-fixed

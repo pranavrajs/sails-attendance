@@ -1,33 +1,15 @@
-var assetApp = angular.module('assetApp', ['ngRoute','angularCharts','mgcrea.ngStrap']);
+var assetApp = angular.module('assetApp', ['ngRoute','angularCharts','mgcrea.ngStrap.alert']);
 
-assetApp
-	.config(function($alertProvider) {
-		angular.extend($alertProvider.defaults, {
-			animation: 'am-fade-and-slide-top',
-			placement: 'top'
-		});
-	})
+
 assetApp.config(['$routeProvider',function($routeProvider){
 	$routeProvider.
 	when('/checkinhistory',{
 		templateUrl:'checkinhistory.html',
 		controller:'CheckinHistController'
 	}).
-	// when('/login',{
-	// 	templateUrl:'login.html',
-	// 	controller:'LoginController'
-	// }).
-	when('/map-asset',{
-		templateUrl:'map-asset.html',
-		controller:'MapAssetController'
-	}).
-	when('/movement-history',{
-		templateUrl:'movement-history.html',
-		controller:'MovementHistoryController'
-	}).
-	when('/asset-details',{
-		templateUrl:'asset-details.html',
-		controller:'AssetDetailsController'
+	when('/employee-profile/:empid',{
+		templateUrl:'employee-profile.html',
+		controller:'EmpProfController'
 	}).
 	otherwise({
 		redirectTo:'/checkinhistory'
@@ -35,14 +17,20 @@ assetApp.config(['$routeProvider',function($routeProvider){
 }]);
 
 
-assetApp.controller('CheckinHistController',['$scope','$http','$log','$interval','$filter','$rootScope',function($scope,$http,$log,$interval,$filter,$rootScope){
+assetApp.controller('CheckinHistController',['$scope','$http','$log','$interval','$filter','$alert','$rootScope',function($scope,$http,$log,$interval,$filter,$alert,$rootScope){
 
 	$scope.empList = [];
 	io.socket.get('/attendance/pushtodb');
     io.socket.on('attendance',function(data){
     	$scope.getRecentCheckin();
-    });
-    
+    	$alert({
+            content: 'New Checkin',
+            animation: 'fadeZoomFadeDown',
+			type: 'success',
+			placement: 'top-right',
+            duration: 3
+        });
+    });    
 	$scope.baseurl = "http://localhost:1337/";
 	$scope.getRecentCheckin = function(){
 	//$interval(function(){
@@ -96,18 +84,17 @@ assetApp.controller('CheckinHistController',['$scope','$http','$log','$interval'
 	    }]
   	};
 }]);
-assetApp.controller('AddAssetController',function($scope){
 
-});
-// assetApp.controller('LoginController',function($scope){
+assetApp.controller('EmpProfController',['$scope','$http','$log','$route','$routeParams',function($scope,$http,$log,$route,$routeParams){
 
-// });
-assetApp.controller('MapAssetController',function($scope){
-
-});
-assetApp.controller('MovementHistoryController',function($scope){
-
-});
-assetApp.controller('AssetDetailsController',function($scope){
-
-});
+	$scope.empid = $routeParams.empid || "";
+	$scope.baseUrl = 'http://localhost:1337/';
+	$http.get('employee/'+ $scope.empid)
+		 .success(function(data){
+		 	$log.info(data);
+		 	$scope.empData = data;
+		 })
+		 .error(function(data){
+		 	$log.info(data);
+		 });
+}]);

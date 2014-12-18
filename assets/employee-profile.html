@@ -1,0 +1,31 @@
+          <!-- Content Container -->
+          <div ng-include src="'includes/sidebar.html'"></div>
+          <div class="content-container col-lg-10 col-md-10 col-sm-12 col-xs-12">
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li><a>Employee</a></li>
+              <li class="active">Employee Details</li>
+            </ol>
+            <!-- Asset Details -->
+            <div class="col-lg-12">
+              <div class="panel panel-primary" style="box-shadow:0;-webkit-box-shadow:0;">
+                <div class="panel-body">
+                    <h4>Employee Profile - {{empData.name}}</h4>
+                    <div class="col-lg-12 asset-details">
+                          <div class="col-md-6 left-asset-move">
+                              <p><strong>Employee ID: </strong> {{empData.uid}} </p>
+                              <p><strong>Employee Name: </strong>{{empData.name}}</p>
+                              <p><strong>Designation: </strong> {{empData.desig}} </p>
+                              <p><strong>Phone: </strong> {{empData.phone}} </p>
+                              <p><strong>Email: </strong> {{empData.email}} </p>                             
+                          </div>
+                          <div class="col-md-6 right-asset-move">        
+                            
+                          </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+          <!-- End Content Container -->
