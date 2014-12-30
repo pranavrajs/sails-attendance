@@ -14,14 +14,18 @@ module.exports = {
 		emp_entry:{
 			model:'Employee'
 		},
+		projcode:{
 
+			required:true,
+			type:'string'
+		},
 		//Other entries
 		uid:{
 			required:true,
 			type:'string'
 		},
 		capturedAt:{
-			type:'string',
+			type:'date',
 			required:true
 		},
 		deviceid:{

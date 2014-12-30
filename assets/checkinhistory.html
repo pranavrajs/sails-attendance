@@ -16,7 +16,7 @@
                         <thead>
                           <th>Sl.No</th>
                           <th>Name</th>
-                          <th>Desig</th>
+                          <th>Project Code</th>
                           <th>TimeStamp</th>
                           <th>DeviceID</th>
                         </thead>
@@ -24,7 +24,7 @@
                           <tr ng-repeat = "employee in empList | orderBy:predicate:reverse ">
                             <td>{{$index+1}}</td>
                             <td>{{employee.emp_entry.name}}</td>
-                            <td>{{employee.emp_entry.desig}}</td>
+                            <td>{{employee.projcode}}</td>
                             <td>{{employee.capturedAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
                             <td>{{employee.deviceid}}</td>
                           </tr>

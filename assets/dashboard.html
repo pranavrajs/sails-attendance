@@ -15,10 +15,10 @@
                           <div class="col-md-12 left-asset-move">
                               <p><strong>Employee ID: </strong> {{employee.emp_entry.uid}} </p>
                               <p><strong>Employee Name: </strong>{{employee.emp_entry.name}}</p>
-                              <p><strong>Designation: </strong> {{employee.emp_entry.desig}} </p>
+                              <!-- <p><strong>Designation: </strong> {{employee.emp_entry.desig}} </p>
                               <p><strong>Phone: </strong> {{employee.emp_entry.phone}} </p>
                               <p><strong>Email: </strong> {{employee.emp_entry.email}} </p>
-
+ -->
                               <p><strong>Checkin Time: </strong>{{employee.capturedAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
                               <p><strong>Checkin Device: </strong> {{employee.deviceid}} </p>
                              
@@ -44,7 +44,7 @@
                         <thead>
                           <th>Sl.No</th>
                           <th>Name</th>
-                          <th>Desig</th>
+                          <th>Project Code</th>
                           <th>TimeStamp</th>
                           <th>DeviceID</th>
                         </thead>
@@ -52,7 +52,7 @@
                           <tr ng-repeat = "employee in empList | orderBy:predicate:reverse | limitTo: 15">
                             <td>{{$index+1}}</td>
                             <td>{{employee.emp_entry.name}}</td>
-                            <td>{{employee.emp_entry.desig}}</td>
+                            <td>{{employee.projcode}}</td>
                             <td>{{employee.capturedAt | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
                             <td>{{employee.deviceid}}</td>
                           </tr>
@@ -64,62 +64,6 @@
           </div>
           
           <script type="text/javascript">
-             $('#container').highcharts({
-                  chart: {
-                      type: 'column'
-                  },
-                  title: {
-                      text: 'Daily Attendance'
-                  },
-                  xAxis: {
-                      categories: [
-                          '18/12',
-                          '17/12',
-                          '16/12',
-                          '15/12',
-                          '14/12',
-                          '13/12',
-                          '12/12',
-                          '11/12',
-                          '10/12',
-                          '09/12',
-                          '08/12',
-                          '07/12'
-                      ]
-                  },
-                  yAxis: {
-                      min: 0,
-                      title: {
-                          text: 'Attendance(%)'
-                      }
-                  },
-                  tooltip: {
-                      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                          '<td style="padding:0"><b>{point.y:.1f}%</b></td></tr>',
-                      footerFormat: '</table>',
-                      shared: true,
-                      useHTML: true
-                  },
-                  plotOptions: {
-                      column: {
-                          pointPadding: 0.2,
-                          borderWidth: 0
-                      }
-                  },
-                  series: [{
-                      name: 'Men',
-                      data: [50, 25, 14, 12,50, 25, 14, 12,50, 25]
-
-                  }, {
-                      name: 'Women',
-                      data: [40, 50, 34, 91,40, 50, 34, 91,40, 50]
-
-                  }, {
-                      name: 'Total',
-                      data: [45, 37.5, 24, 51.5,45, 37.5, 24, 51.5,45, 37.5]
-
-                  }]
-              });
+             
           </script>
           <!-- End Content Container -->

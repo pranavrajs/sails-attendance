@@ -26,7 +26,8 @@ module.exports = {
 						data_from_client.emp_entry = 0;
 					else
 						data_from_client.emp_entry = data[0].id;
-
+					data_from_client.capturedAt = new Date(data_from_client.capturedAt);
+					console.log(new Date(data_from_client.capturedAt));
 					console.log(err);
 					Attendance.create(data_from_client)
 							.exec(function(err,success_data){
@@ -98,6 +99,16 @@ module.exports = {
 			 					error: error_data
 			 				},403);
 			});
-	}	
+	},
+
+	dailylog:function (req,res) {
+		
+		Attendance.query('SELECT  count(DISTINCT uid) as empcount,DATE(createdAt) as logdate FROM attendance GROUP by DATE(createdAt);'
+				  ,function(err,data){
+				  		console.log(err);
+				  		console.log(data);
+				  		res.json(data);
+				  });
+	}
 };
 

@@ -26,16 +26,13 @@ module.exports = {
       },
   		phone:{
   			type:"string",
-  			required:true
   		},
   		email:{
   			type:"email",
-  			required:true,
   			unique: true
   		},
   		desig:{
   			type:"string",
-  			required:true
   		},
   		empid:{
   			type:"string",
