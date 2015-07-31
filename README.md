@@ -11,7 +11,7 @@ Lift the app
 Add details using APIs
 
 ```
-git clone https://github.com/pranavrajs/sensomate-attendance.git
+git clone https://github.com/pranavrajs/sails-attendance.git
 cd sensomate-attendance
 sudo npm install
 ```
